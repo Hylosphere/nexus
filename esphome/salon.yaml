@@ -1,0 +1,35 @@
+esphome:
+  name: radiateur-salon
+
+esp32:
+  board: az-delivery-devkit-v4
+  framework:
+    type: arduino
+
+logger:
+
+api:
+  password: !secret api_password
+  reboot_timeout: 15min
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: !secret fallback_ap_ssid
+    password: !secret fallback_ap_password
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    id: relay_chauffage
+    pin: 23
+    name: "Radiateur Salon"
+    icon: "mdi:radiator"
+    restore_mode: ALWAYS_OFF

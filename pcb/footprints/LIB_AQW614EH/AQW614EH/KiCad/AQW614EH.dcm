@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AQW614EH
+D PANASONIC - AQW614EH - MOSFET Relay, 400 V, 100 mA, 35 ohm, SPST-NO
+K
+F https://industry.panasonic.com/ac/cdn/e/control/relay/photomos/catalog/semi_eng_ge1a1b_aqw61_e.pdf
+$ENDCMP
+#
+#End Doc Library

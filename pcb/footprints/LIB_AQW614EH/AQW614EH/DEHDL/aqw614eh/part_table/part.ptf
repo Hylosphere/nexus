@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'AQW614EH'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Panasonic", "AQW614EH" (!) = "", "DIP762W47P254L986H340Q8N", "Dual-In-Line Packages", "769-AQW614EH", "https://www.mouser.co.uk/ProductDetail/Panasonic-Industrial-Devices/AQW614EH?qs=sEN%2FkO1EG6ZhUHJMW3faVQ%3D%3D", "", "", "PANASONIC - AQW614EH - MOSFET Relay, 400 V, 100 mA, 35 ohm, SPST-NO", "https://industry.panasonic.com/ac/cdn/e/control/relay/photomos/catalog/semi_eng_ge1a1b_aqw61_e.pdf", "3.4 mm"
+END_PART
+
+END.

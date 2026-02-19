@@ -1,0 +1,15 @@
+# --- Côté Mac (Environnement Python/C++) ---
+.DS_Store
+esphome/venv/
+esphome/.esphome/
+esphome/.pio/
+
+# --- Côté Home Assistant (Sécurité et Poids) ---
+homeassistant/*.db
+homeassistant/*.db-shm
+homeassistant/*.db-wal
+homeassistant/*.log
+homeassistant/.storage/
+homeassistant/backups/
+homeassistant/secrets.yaml
+esphome/secrets.yaml
