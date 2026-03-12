@@ -26,6 +26,10 @@ wifi:
 
 captive_portal:
 
+esp32_ble_tracker:
+bluetooth_proxy:
+  active: true
+
 switch:
   - platform: gpio
     id: relay_chauffage
