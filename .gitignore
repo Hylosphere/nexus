@@ -13,3 +13,4 @@ homeassistant/.storage/
 homeassistant/backups/
 homeassistant/secrets.yaml
 esphome/secrets.yaml
+pcb/esp_home_heat-backups/

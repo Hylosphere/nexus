@@ -1,0 +1,12 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /opt/nexus/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/serial/by-id/usb-SONOFF_SONOFF_Dongle_Lite_MG21_2c3f9a6a6d8bef1184a222ccef8776e9-if00-port0:/dev/ttyUSB0
+    restart: unless-stopped
+    privileged: true
+    network_mode: host

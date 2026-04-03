@@ -2,7 +2,8 @@ esphome:
   name: radiateur-salon
 
 esp32:
-  board: az-delivery-devkit-v4
+  board: esp32-c3-devkitm-1
+  variant: esp32c3
   framework:
     type: arduino
 
@@ -33,7 +34,7 @@ bluetooth_proxy:
 switch:
   - platform: gpio
     id: relay_chauffage
-    pin: 23
+    pin: 7
     name: "Radiateur Salon"
     icon: "mdi:radiator"
     restore_mode: ALWAYS_OFF

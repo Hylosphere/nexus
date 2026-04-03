@@ -1,25 +1,31 @@
 #!/bin/bash
 
 # --- PARAMÈTRES ---
-RPI_IP="192.168.1.69"    # L'IP fixe de votre Raspberry Pi
-RPI_USER="alg"           # Votre utilisateur sur le Pi
-LOCAL_DIR="./homeassistant/"
-REMOTE_DIR="/home/alg/homeassistant/"
+SERVER_IP="192.168.1.100"        # IP du PC Ubuntu
+SERVER_USER="alg"                # Utilisateur sur Ubuntu
+REMOTE_DIR="/opt/nexus/"         # Dossier cible sur le serveur
 
-echo "🚀 Début du déploiement vers Nexus ($RPI_IP)..."
+echo "🚀 Début du déploiement vers le serveur Nexus ($SERVER_IP)..."
 
 # --- 1. SYNCHRONISATION DES FICHIERS ---
-# rsync va copier uniquement les fichiers modifiés.
-# Les --exclude empêchent d'écraser la base de données du Pi ou ses fichiers cachés vitaux.
-echo "📦 Envoi des fichiers de configuration..."
+echo "📦 Envoi de la configuration (Home Assistant, Docker)..."
 rsync -rlptzv --no-perms --no-owner --no-group \
-  --exclude='.storage' \
-  --exclude='*.db*' \
-  --exclude='*.log' \
-  "$LOCAL_DIR" "$RPI_USER@$RPI_IP:$REMOTE_DIR"
+  --exclude='.git' \
+  --exclude='.DS_Store' \
+  --exclude='pcb' \
+  --exclude='deploy.sh' \
+  --exclude='install.sh' \
+  --exclude='esphome' \
+  --exclude='homeassistant/.storage' \
+  --exclude='homeassistant/deps' \
+  --exclude='homeassistant/tts' \
+  --exclude='homeassistant/*.db*' \
+  --exclude='homeassistant/*.log*' \
+  --exclude='homeassistant/zigbee.db*' \
+  ./ "$SERVER_USER@$SERVER_IP:$REMOTE_DIR"
 
-# --- 2. REDÉMARRAGE DE HOME ASSISTANT ---
-echo "🔄 Redémarrage du conteneur Docker Home Assistant..."
-ssh $RPI_USER@$RPI_IP "sudo docker restart homeassistant"
+# --- 2. GESTION DES CONTENEURS ---
+echo "🔄 Mise à jour et redémarrage des conteneurs Docker..."
+ssh -t $SERVER_USER@$SERVER_IP "cd $REMOTE_DIR && sudo docker compose up -d && sudo docker compose restart homeassistant"
 
-echo "✅ Déploiement terminé avec succès ! Home Assistant sera en ligne dans 30 secondes."
+echo "✅ Déploiement terminé avec succès ! Home Assistant sera en ligne dans quelques secondes."
