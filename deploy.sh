@@ -9,13 +9,15 @@ echo "🚀 Début du déploiement vers le serveur Nexus ($SERVER_IP)..."
 
 # --- 1. SYNCHRONISATION DES FICHIERS ---
 echo "📦 Envoi de la configuration (Home Assistant, Docker)..."
-rsync -rlptzv --no-perms --no-owner --no-group \
+rsync -rlptzui --no-perms --no-owner --no-group \
   --exclude='.git' \
   --exclude='.DS_Store' \
   --exclude='pcb' \
   --exclude='deploy.sh' \
   --exclude='install.sh' \
+  --exclude='diff.sh' \
   --exclude='esphome' \
+  --exclude='.gitignore' \
   --exclude='homeassistant/.storage' \
   --exclude='homeassistant/deps' \
   --exclude='homeassistant/tts' \
